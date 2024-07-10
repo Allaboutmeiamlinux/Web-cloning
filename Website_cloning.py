@@ -12,8 +12,10 @@ class WebsiteCloner:
     def save_file(self, url, content):
         parsed_url = urlparse(url)
         file_path = os.path.join(self.output_dir, parsed_url.netloc, parsed_url.path.lstrip('/'))
-        if not file_path.endswith('.html'):
-            file_path += '.html'
+        
+        if parsed_url.path.endswith('/') or not os.path.splitext(file_path)[1]:
+            file_path = os.path.join(file_path, 'index.html')
+        
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, 'wb') as file:
             file.write(content)
@@ -70,6 +72,6 @@ __        __   _         _ _              _             _
                                                                 
                                                               By linux
       \033[0m\n''')
-    base_url = input("Enter youe website url:-")
+    base_url = input("Enter your website URL: ")
     cloner = WebsiteCloner(base_url)
     cloner.run()
