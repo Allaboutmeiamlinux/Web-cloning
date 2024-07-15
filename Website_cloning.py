@@ -1,4 +1,5 @@
 import os
+import time
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
@@ -59,19 +60,39 @@ class WebsiteCloner:
     def run(self):
         self.clone(self.base_url)
         print('\033[32mCloning completed.\033[0m')
-
+        
+def main():
+    print('''\033[0;34m\t
+    __        __   _         _ _              _             _             
+    \ \      / /__| |__  ___(_) |_ ___    ___| | ___  _ __ (_)_ __   __ _ 
+     \ \ /\ / / _ \ '_ \/ __| | __/ _ \  / __| |/ _ \| '_ \| | '_ \ / _` |
+      \ V  V /  __/ |_) \__ \ | ||  __/ | (__| | (_) | | | | | | | | (_| |
+       \_/\_/ \___|_.__/|___/_|\__\___|  \___|_|\___/|_| |_|_|_| |_|\__, |
+                                                                    |___/ 
+                                                            
+                                                                  By linux
+    \033[0m\n''')
+    x = int(input("Enter password:-"))
+    if x == 2002:
+        print("\033[32m\tAccess Granted\033[0m")
+        time.sleep(1)
+        os.system('clear')
+        print('''\033[0;35m\t
+        __        __   _         _ _              _             _             
+        \ \      / /__| |__  ___(_) |_ ___    ___| | ___  _ __ (_)_ __   __ _ 
+         \ \ /\ / / _ \ '_ \/ __| | __/ _ \  / __| |/ _ \| '_ \| | '_ \ / _` |
+          \ V  V /  __/ |_) \__ \ | ||  __/ | (__| | (_) | | | | | | | | (_| |
+           \_/\_/ \___|_.__/|___/_|\__\___|  \___|_|\___/|_| |_|_|_| |_|\__, |
+                                                                        |___/ 
+                                                            
+                                                                      By linux
+        \033[0m\n''')
+        base_url = input("Enter your website URL: ")
+        cloner = WebsiteCloner(base_url)
+        cloner.run()
+        
+    else:
+        print("\t\033[31mAccess Denied!\033[0m\n")    
+    
 if __name__ == '__main__':
-    os.system('clear')
-    print('''\033[0;35m\t
-__        __   _         _ _              _             _             
-\ \      / /__| |__  ___(_) |_ ___    ___| | ___  _ __ (_)_ __   __ _ 
- \ \ /\ / / _ \ '_ \/ __| | __/ _ \  / __| |/ _ \| '_ \| | '_ \ / _` |
-  \ V  V /  __/ |_) \__ \ | ||  __/ | (__| | (_) | | | | | | | | (_| |
-   \_/\_/ \___|_.__/|___/_|\__\___|  \___|_|\___/|_| |_|_|_| |_|\__, |
-                                                                |___/ 
-                                                                
-                                                              By linux
-      \033[0m\n''')
-    base_url = input("Enter your website URL: ")
-    cloner = WebsiteCloner(base_url)
-    cloner.run()
+    main()
